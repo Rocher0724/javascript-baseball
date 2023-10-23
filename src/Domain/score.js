@@ -1,9 +1,8 @@
-
-const coumputerRandom = require('./Domain/computer')
-
 // computer.js에서  randomValue 사용하고싶음 => 어케 연결하는거지?
+// 이렇게!
+import { computerRandom } from "./computer.js";
 
-function checkingScore (computerInputNumber, userInputNumbers) {
+export function checkingScore (computerInputNumber, userInputNumbers) {
     let score = [0, 0];
     for (let i = 0; i <3; i++) {
         if (computerInputNumber[i] === userInputNumbers[i]) {
@@ -13,10 +12,11 @@ function checkingScore (computerInputNumber, userInputNumbers) {
             score[1] += 1;
         }
     }
+    return score
 }
 
-function play(computerInputNumber, userInputNumbers) {
-    const score = this.checkingScore(computerInputNumber, userInputNumbers);
+export function play(computerInputNumber, userInputNumbers) {
+    const score = checkingScore(computerInputNumber, userInputNumbers);
     let answer = ""
     if (score[0] === 0 && score[1] === 0) {
         answer = "낫싱";
